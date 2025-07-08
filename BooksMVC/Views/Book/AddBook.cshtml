@@ -1,0 +1,56 @@
+﻿@model BooksMVC.Models.BookModel
+
+@{
+    ViewData["Title"] = "Add New Book";
+}
+
+<h1 class="mb-4">Add New Book</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        @if (TempData["BookId"] != null)
+        {
+            <strong>Book ID: @TempData["BookId"]</strong>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddBook" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="BookName" class="form-label"></label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="BookAuthor" class="form-label"></label>
+                <input asp-for="BookAuthor" class="form-control" />
+                <span asp-validation-for="BookAuthor" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="BookPrice" class="form-label"></label>
+                <input asp-for="BookPrice" class="form-control" />
+                <span asp-validation-for="BookPrice" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Add Book</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Book Management";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Book Management</h1>
+    <p>Use the links below to manage your books.</p>
+
+    <div class="mt-4">
+        <a asp-controller="Book" asp-action="AddBook" class="btn btn-primary btn-lg mx-2">Add New Book</a>
+        <a asp-controller="Book" asp-action="ShowBooks" class="btn btn-secondary btn-lg mx-2">View All Books</a>
+    </div>
+</div>
